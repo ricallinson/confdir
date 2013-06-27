@@ -76,4 +76,17 @@ describe("confdir.read()", function () {
         assert.equal(config.yaml.yamlMap.mapKey, "mapValue");
         assert.equal(config.yml.ymlKey, "ymlValue");
     });
+
+    it("should return undefined", function () {
+
+        var config = confdir.read(pathlib.join(__dirname, "fixtures", "bad")),
+            name,
+            test = false;
+
+        for (name in config) {
+            test = true;
+        }
+
+        assert.strictEqual(test, false);
+    });
 });
